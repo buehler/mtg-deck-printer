@@ -1,0 +1,44 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@page {
+  size: A4;
+  margin: 0.6cm;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+  }
+
+  main {
+    margin: 0 !important;
+  }
+
+  .print-hidden {
+    display: none;
+  }
+
+  .card-page {
+    display: block;
+    margin: 0;
+  }
+
+  .card {
+    display: inline-block;
+    margin-right: 1mm;
+    width: 63mm;
+    height: 88mm;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: block;
+  }
+}
