@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: ['react-hot-loader/patch', './src/index.tsx'],
@@ -45,7 +46,21 @@ const config = {
     contentBase: './dist',
     historyApiFallback: true,
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: false,
+      template: require('html-webpack-template'),
+      title: 'MTG Card Printer',
+      appMountId: 'app',
+      baseHref: 'https://c_buehler.gitlab.io/mtg-deck-printer/',
+      scripts: [
+        {
+          src: 'bundle.js',
+        },
+      ],
+    }),
+    new MiniCssExtractPlugin(),
+  ],
 };
 
 module.exports = config;
