@@ -6,7 +6,7 @@ import { SelectDeck } from './pages/select-deck';
 import { DeckOverview } from './pages/deck-overview';
 
 export const App = hot(() => (
-  <Router>
+  <Router basename="/mtg-deck-printer">
     <Header />
     <main className="mx-12 my-16">
       <Switch>
