@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: ['react-hot-loader/patch', './src/index.tsx'],
@@ -17,7 +18,7 @@ const config = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -44,6 +45,7 @@ const config = {
     contentBase: './dist',
     historyApiFallback: true,
   },
+  plugins: [new MiniCssExtractPlugin()],
 };
 
 module.exports = config;
