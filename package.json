@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/react-router-dom": "^5.1.5",
     "html-webpack-plugin": "^4.3.0",
+    "purgecss-webpack-plugin": "^2.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
