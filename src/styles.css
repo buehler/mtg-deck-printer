@@ -30,9 +30,13 @@
 
   .card {
     display: inline-block;
-    margin-right: 1mm;
+    margin: 0;
     width: 63mm;
     height: 88mm;
+    box-sizing: border-box;
+    line-height: 0;
+    font-size: 0;
+    margin-bottom: -2mm;
   }
 
   .card-img {
