@@ -6,16 +6,26 @@ export const Cards = ({
   cards: {
     title: string;
     count: number;
+    set?: string;
   }[];
 }) => {
-  const allCards = [] as string[];
-  for (const { title, count } of cards) {
+  const allCards = [] as {
+    title: string;
+    set?: string;
+  }[];
+  for (const { title, count, set } of cards) {
     for (let x = 0; x < count; x++) {
-      allCards.push(title);
+      allCards.push({ title, set });
     }
   }
 
-  function chunk(arr: any, chunkSize: number): string[][] {
+  function chunk(
+    arr: any,
+    chunkSize: number
+  ): {
+    title: string;
+    set?: string;
+  }[][] {
     return [].concat.apply(
       [],
       arr.map(function (elem: any, i: any) {
@@ -33,11 +43,13 @@ export const Cards = ({
       </div>
       {chunks.map((c, ci) => (
         <div key={`chunk_${ci}`} className="grid grid-cols-3 col-gap-2 row-gap-2 mb-2 card-page">
-          {c.map((title, i) => (
+          {c.map(({ title, set }, i) => (
             <div key={i} className="card">
               <img
                 className="card-img"
-                src={`https://www.mtg-forum.de/db/picture.php?utf8=1&lng=en&card=${encodeURI(title)}`}
+                src={`https://www.mtg-forum.de/db/picture.php?utf8=1&lng=en&card=${encodeURI(title)}${
+                  set ? '&set=' + set : ''
+                }`}
               />
             </div>
           ))}
